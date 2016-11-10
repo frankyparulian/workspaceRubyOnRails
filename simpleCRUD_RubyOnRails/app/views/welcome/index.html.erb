@@ -1,0 +1,17 @@
+<h1>Hello, Rails</h1>
+<p>Ini adalah halaman homepage,halaman ini menjadi halaman root atau (/)</p>
+<p>Halaman ini berada di app/views/welcome/index.html.erb
+<br>halaman ini dapat juga diakses dari url welcome/index
+</p>
+
+<p>
+    dari halaman ini juga, terdapat link, untuk menuju article yaitu link <%= link_to 'Article',  articles_path %> <br>
+    link tersebut juga sama dengan <a href="/articles">Article</a> ,dimana url articles_path = <%= articles_path%> <br>
+</p>
+
+<p>
+  dari halaman ini juga dapat menuju link:
+   <li>Article index : <%= link_to 'Article Index',  :controller => "articles", :action => "index" %></li>
+   <li>Article new : <%= link_to 'Article New',  :controller => "articles", :action => "new" %></li>
+   jika diperhatikan, link tersebut mengarah pada method lain yang berada pada controller yang berbeda.
+<p>

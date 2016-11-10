@@ -1,0 +1,29 @@
+<h1>Articles#create</h1>
+<p>Find me in app/views/articles/create.html.erb</p>
+
+<p>
+    ini merupakan halaman yang menampilkan inputan dari halaman article/new. <br>
+    halaman ini dipanggil setelah method create di controler article dijalankan.<br>
+    jika diperhatikan isian pada form, dimasukkan ke variabel @article.</br>
+    variabel tersebut dapat digunakan pada view seperti dibawah ini.
+</p>
+
+<% @article.each do |a| %>
+<p>-<%= a.first%> : <%= a.second%> -- </p>
+<% end %>
+
+<p>
+    variabel @article perlu diloop karena merupakan array yang setiap elementnya disimpan ke variabel a. <br>
+    variabel a ini juga merupakan array dari parameter yang menjadi inputan di halaman sebelumnya, yang formatnya a[index]=>value.<br>
+    dalam case ini, jika diperhatikan, inputan kita sebelumnya yaitu "title":"article title" dan "text":"article text" .<br>
+    hal ini lah yang menyebabkan kenapa pelu dilakukan looping sehingga diperoleh variabel a yang pertama berisi "title":"article title", <br>
+    serta yang kedua "text":"article text". pada ruby juga dimudahkan dalam pengaksesan array, sehingga dalam menampilkan setiap element, hanya dengan a.first dan a.second .<br>
+    @article = "title":"article title"; maka a yang pertama berisi "title":"article title", sehingga saat a.first= "title" (*yang merupakan index), serta a.second = "article title".<br>
+    begitu juga dengan a saat loop yang selanjutnya diman a mempunyai element "text":"article text".
+    <br>
+</p>
+<p>
+    pada ruby juga dimudahkan dalam penanganan error handling, dimana saat halaman ini direfresh atau dimuat ulang, maka akan dilempar ke halaman lain(article/show)<br>
+    hal ini terjadi karena method create dapat berjalan jika dengan method post dimana create menjadi parameternya, sehingga oleh routes ruby diarahkan ke halaman show.
+</p>
+<p>done</p>

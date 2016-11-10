@@ -1,0 +1,39 @@
+<h1>New Articles</h1>
+
+<%= form_for :article , url: articles_path  do |f|%>
+  <p> article path : <%=articles_path%> <br>
+      secara default, form ini menggunakan method post dalam mengirimkan datanya.
+      url yang dituju yaitu: article path yang sebelumnya telah diketahui.<br>
+      nantinya,hasil dari inputan akan diproses dan ditampilkan oleh method welcome/create.<br>
+      namun yang menjadi pertanyaan, kenapa harus method tersebut?<br>
+      jawabannya: jika diperhatikan, pada url articles_path tidak ada ditujukan secara specifik.<br>
+      namun pada ruby, ada mekanisme tertentu yang mencocokkan patern url tertentu dengan routes yang dimiliki(dapat di cek di :# rake routes)<br>
+      jika diperhatikan, request ke alamat articles_path yang menggunakan method post, akan ditangani oleh method create pada controler welcome.
+      <br>
+  </p>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@article.errors.count, "error")%>
+            prohibited this article from beeing saved
+        </h2>
+        <ul>
+            <% @article.errors.full_messages.each do |msg|%>
+              <li><%= msg%></li>
+            <% end %>
+        </ul>
+    </div>
+  <%end%>
+
+  <p>
+      <%= f.label :title  %><br> <!-- label -->
+      <%= f.text_field :title %> <!-- inputan text field-->
+  </p>
+  <p>
+      <%= f.label :text %><br> <!-- label-->
+      <%= f.text_area :text%> <!-- inputan untuk text area-->
+  </p>
+  <p>
+      <%= f.submit %>
+  </p>
+<% end %>

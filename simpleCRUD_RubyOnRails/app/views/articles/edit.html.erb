@@ -1,0 +1,52 @@
+<h1>Articles#edit</h1>
+<p>Find me in app/views/articles/edit.html.erb</p>
+<p>
+      Halaman ini digunakan untuk edit inputan yang telah dimasukkan.<br>
+      <br>
+      <p>
+          halaman ini memiliki variabel @article yang telah di set pada method edit di controler article.<br>
+          setelah menekan tombol submit, inputan akan proses oleh method update pada controller article.<br>
+      </p>
+      <br>
+      <%=  form_for :article, url: article_path(@article), method: :patch do |f| %>
+        <% if @article.errors.any? %>
+          <div id="error_explanation">
+              <h2>
+                  <%= pluralize(@article.errors.count, "error")%>
+                  prohibited this article from beeing saved
+              </h2>
+              <ul>
+                  <% @article.errors.full_messages.each do |msg|%>
+                    <li><%= msg%></li>
+                  <% end %>
+              </ul>
+          </div>
+        <%end%>
+
+        <p>
+            <%= f.label :title  %><br> <!-- label -->
+            <%= f.text_field :title %> <!-- inputan text field-->
+        </p>
+        <p>
+            <%= f.label :text %><br> <!-- label-->
+            <%= f.text_area :text%> <!-- inputan untuk text area-->
+        </p>
+        <p>
+            <%= f.submit %>
+        </p>
+
+      <% end %>
+
+
+      <%= link_to 'Back', articles_path%>
+</p>
+
+<p>
+    form juga dapat digunakan bersama-sama dengan tinggal hanya render akan form yang dibutuhkan.<br>
+    hal itu dapat dilakukan seperti berikut: <br>
+
+    <%= render 'form' %>
+
+    <br>
+    form tersebut diambil dari file app/views/articles/_form.html.erb
+</p>

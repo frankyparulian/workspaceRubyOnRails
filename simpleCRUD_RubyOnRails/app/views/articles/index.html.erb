@@ -1,0 +1,33 @@
+<h1>Articles#index</h1>
+<p>Find me in app/views/articles/index.html.erb</p>
+
+<p>
+  ini merupakan halaman view dari method index pada controller articles.<br>
+  halaman ini menjadi halaman utama dari controller articles.<br>
+  dari halaman ini, kita dapat mengakses halaman method articles pada halaman: <br>
+    <li>Articles Index : <%= link_to 'Index', articles_path %></li>
+    <li>Articles New : <%= link_to 'New', :controller=>"articles", :action=>"new" %></li>
+
+</p>
+
+<p>
+    ini merupakan bagian dalam menampilkan semua list article dari database<br>
+    kembalian dari database tersebut diperoleh melalui variabel @articles yang sebelumnya di set pada method index pada controler articles.<br>
+</p>
+    <br>
+      <table style="border:1;">
+          <tr>
+              <th>Title</th>
+              <th>Text</th>
+          </tr>
+          <% @articles.each do |article|%>
+            <tr></tr>
+            <tr>
+                  <td><%= article.title%></td>
+                  <td><%= article.text%></td>
+                  <td><%= link_to 'Show' ,:controller=>"articles", :action=>"show", :id=> article  %></td>
+                  <td><%= link_to 'Edit' , edit_article_path(article) %></td>
+                  <td><%= link_to 'Destroy' , article_path(article), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            </tr>
+          <%end%>
+      </table>
