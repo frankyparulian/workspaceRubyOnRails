@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ponies</h1>
+<p>
+    kode berikut ini akan menampilkan  semua list dari poni yang telah tersimpan.<br>
+    pada saat memilih dan click tombol destroy pada list poni, baris kode "data: { confirm: 'Are you sure?' }",akan menampilkan pop-up konfirmasi penghapusan.<br>
+    tombol destroy tersebut ditandai sebagai delete_poni, sehingga pada file app/views/ponies/destroy.js.erb, item baris(tr) dihapus dari tabel.<br>
+    hal ini menguntungkan karena halaman tidak perlu memuat ulang halaman saat melakukan penghapusa poni.<br>
+    baris kode ajax akan menghapus baris(tr) dari tabel, dan otomatis akan memperbaiki struktur tabel menjadi rapi.<br>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Profession</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ponies.each do |pony| %>
+      <tr>
+        <td><%= pony.name %></td>
+        <td><%= pony.profession %></td>
+        <td><%= link_to 'Show', pony %></td>
+        <td><%= link_to 'Edit', edit_pony_path(pony) %></td>
+        <td><%= link_to 'Destroy', pony, method: :delete, data: { confirm: 'Are you sure?' },
+         :remote => true, :class=> 'delete_pony' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pony', new_pony_path %>

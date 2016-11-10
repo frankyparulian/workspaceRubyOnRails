@@ -1,0 +1,4 @@
+== 20161109102122 Subjects: migrating =========================================
+-- create_table(:subjects)
+   -> 0.0010s
+-- subjects()
