@@ -1,0 +1,1 @@
+Project ini merupakan latihan yang didasarkan pada url: http://guides.railsgirls.com/devise
