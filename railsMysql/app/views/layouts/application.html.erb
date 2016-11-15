@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsMysql</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%if flash[:color]== "valid"%>
+    <p><%= flash[:notice]%></p>
+  <%elseif flash[:color]%>
+    <p><%= flash[:notice]%></p>
+  <%end%>
+
+<%= yield %>
+
+</body>
+</html>
