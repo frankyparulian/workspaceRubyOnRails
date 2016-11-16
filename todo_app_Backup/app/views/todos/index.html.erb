@@ -1,0 +1,23 @@
+<h1>Todos</h1>
+<%= form_for Todo.new , remote: true do |f| %>
+  <div class="form-group">
+  	<%= f.text_field :description, placeholder: "What needs doing?" %>
+  </div>
+  <div class="form-group">
+  	<%= f.text_field :priority, placeholder: "Priority Level"%>
+  </div>
+
+  <div class="form-group">
+  	<%= f.submit %>
+  </div>
+<% end %>
+
+<ul>
+	<% @todos.each do |todo| %>
+		<li>
+			<%= todo.description%> <br>
+			<strong> Priority: </strong> <%= todo.priority %><br>
+			<%= link_to "done", todo_path(todo), method: 'delete', remote: true%>
+		</li>
+	<% end %>
+</ul>
