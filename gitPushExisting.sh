@@ -1,5 +1,5 @@
 #!/bin/bash
-git add /home/chiron/franky/workspace*
+git add --all .
 
 git commit -m "commit code"
 
